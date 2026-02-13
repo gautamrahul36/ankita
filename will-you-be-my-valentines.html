@@ -160,6 +160,55 @@
                 opacity: 0
             }
         }
+        /* Scroll Indicator */
+.scroll-indicator{
+position:absolute;
+bottom:30px;
+left:50%;
+transform:translateX(-50%);
+text-align:center;
+font-size:14px;
+color:#ff4d6d;
+animation:fadeIn 2s ease-in-out;
+}
+
+.scroll-indicator span{
+display:block;
+margin-bottom:8px;
+letter-spacing:1px;
+}
+
+.mouse{
+width:28px;
+height:45px;
+border:2px solid #ff4d6d;
+border-radius:20px;
+margin:auto;
+position:relative;
+}
+
+.wheel{
+width:4px;
+height:8px;
+background:#ff4d6d;
+position:absolute;
+top:8px;
+left:50%;
+transform:translateX(-50%);
+border-radius:2px;
+animation:scrollWheel 1.5s infinite;
+}
+
+@keyframes scrollWheel{
+0%{ opacity:1; top:8px; }
+100%{ opacity:0; top:20px; }
+}
+
+@keyframes fadeIn{
+from{opacity:0;}
+to{opacity:1;}
+}
+
     </style>
 </head>
 
@@ -172,6 +221,12 @@
     <section class="hero">
         <h2>Happy Valentine’s Day, Ankita ❤️</h2>
         <button class="music-btn" onclick="toggleMusic()">Play Music 🎼</button>
+        <div class="scroll-indicator">
+    <span>Scroll Down</span>
+    <div class="mouse">
+        <div class="wheel"></div>
+    </div>
+</div>
     </section>
 
     <section>
