@@ -1,166 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Ankita ❤️</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Ankita ❤️</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+<style>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box
-        }
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background:#fff5f7;
+color:#333;
+text-align:center;
+overflow-x:hidden;
+}
 
-        body {
-            font-family: 'Poppins',sans-serif;
-            background: linear-gradient(to bottom,#fff5f7,#ffe3ec);
-            color: #333;
-            overflow-x: hidden;
-        }
+/* HERO SECTION */
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+position:relative;
+padding:20px;
+}
 
-        /* HERO */
-        .hero {
-            height: 90vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-        }
+h1{
+font-size:32px;
+color:#ff4d6d;
+margin-bottom:10px;
+}
 
-            .hero h2 {
-                font-family: 'Playfair Display',serif;
-                font-size: 2.2rem;
-                color: #d63384;
-            }
+.subtitle{
+font-size:18px;
+color:#666;
+}
 
-        .music-btn {
-            margin-top: 20px;
-            padding: 12px 28px;
-            border-radius: 30px;
-            border: none;
-            background: #ff85a2;
-            color: white;
-            font-size: 1rem;
-        }
-
-        /* SECTION */
-        section {
-            padding: 50px 8%
-        }
-
-        .title {
-            font-family: 'Playfair Display',serif;
-            font-size: 1.8rem;
-            text-align: center;
-            margin-bottom: 30px;
-            color: #d63384;
-        }
-
-        /* SLIDESHOW */
-        .slideshow {
-            position: relative;
-            height: 55vh;
-            overflow: hidden;
-            border-radius: 20px;
-        }
-
-        .slide {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            opacity: 0;
-            transition: opacity 1.5s ease-in-out;
-        }
-
-            .slide.active {
-                opacity: 1;
-                animation: zoomEffect 6s ease-in-out forwards;
-            }
-
-        @keyframes zoomEffect {
-            0% {
-                transform: scale(1)
-            }
-
-            100% {
-                transform: scale(1.1)
-            }
-        }
-
-        /* LETTER */
-        .letter {
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            line-height: 1.7;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-        }
-
-        /* GAME */
-        .final {
-            height: 60vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-
-        .game-area {
-            position: relative;
-            width: 100%;
-            height: 200px;
-            margin-top: 30px;
-        }
-
-        .yes-btn, .no-btn {
-            position: absolute;
-            padding: 12px 25px;
-            font-size: 1rem;
-            border-radius: 25px;
-            border: none;
-        }
-
-        .yes-btn {
-            left: 20%;
-            top: 50%;
-            background: #ff4d6d;
-            color: white;
-        }
-
-        .no-btn {
-            left: 60%;
-            top: 50%;
-            background: #adb5bd;
-            color: white;
-        }
-
-        /* HEARTS */
-        .heart {
-            position: fixed;
-            font-size: 18px;
-            animation: fall 4s linear infinite;
-        }
-
-        @keyframes fall {
-            0% {
-                transform: translateY(-10vh);
-                opacity: 1
-            }
-
-            100% {
-                transform: translateY(100vh);
-                opacity: 0
-            }
-        }
-        /* Scroll Indicator */
+/* Scroll Indicator */
 .scroll-indicator{
 position:absolute;
 bottom:30px;
@@ -169,18 +47,11 @@ transform:translateX(-50%);
 text-align:center;
 font-size:14px;
 color:#ff4d6d;
-animation:fadeIn 2s ease-in-out;
-}
-
-.scroll-indicator span{
-display:block;
-margin-bottom:8px;
-letter-spacing:1px;
 }
 
 .mouse{
-width:28px;
-height:45px;
+width:26px;
+height:42px;
 border:2px solid #ff4d6d;
 border-radius:20px;
 margin:auto;
@@ -200,132 +71,178 @@ animation:scrollWheel 1.5s infinite;
 }
 
 @keyframes scrollWheel{
-0%{ opacity:1; top:8px; }
-100%{ opacity:0; top:20px; }
+0%{opacity:1;top:8px;}
+100%{opacity:0;top:20px;}
 }
 
-@keyframes fadeIn{
-from{opacity:0;}
-to{opacity:1;}
+/* SLIDESHOW */
+.slideshow{
+position:relative;
+height:80vh;
+width:100%;
+overflow:hidden;
 }
 
-    </style>
+.slide{
+position:absolute;
+width:100%;
+height:100%;
+background-size:cover;
+background-position:center;
+opacity:0;
+transition:opacity 2s ease-in-out;
+transform:scale(1);
+}
+
+.slide.active{
+opacity:1;
+animation:zoom 8s ease-in-out forwards;
+}
+
+@keyframes zoom{
+0%{transform:scale(1);}
+100%{transform:scale(1.15);}
+}
+
+/* VALENTINE GAME */
+.proposal{
+padding:60px 20px;
+}
+
+.proposal h2{
+color:#ff4d6d;
+font-size:24px;
+}
+
+.buttons{
+margin-top:30px;
+position:relative;
+height:150px;
+}
+
+button{
+padding:12px 25px;
+font-size:16px;
+border:none;
+border-radius:25px;
+cursor:pointer;
+margin:10px;
+}
+
+.yes{
+background:#ff4d6d;
+color:white;
+}
+
+.no{
+background:#ccc;
+}
+
+/* Hearts */
+.heart{
+position:fixed;
+color:#ff4d6d;
+font-size:20px;
+animation:float 3s linear forwards;
+}
+
+@keyframes float{
+0%{transform:translateY(0);opacity:1;}
+100%{transform:translateY(-300px);opacity:0;}
+}
+
+</style>
 </head>
-
 <body>
 
-    <audio id="bgMusic" loop>
-        <source src="Heeriye.mp3" type="audio/mpeg">
-    </audio>
+<!-- MUSIC -->
+<audio id="music" src="Heeriye.mp3" loop></audio>
 
-    <section class="hero">
-        <h2>Happy Valentine’s Day, Ankita ❤️</h2>
-        <button class="music-btn" onclick="toggleMusic()">Play Music 🎼</button>
-        <div class="scroll-indicator">
-    <span>Scroll Down</span>
-    <div class="mouse">
-        <div class="wheel"></div>
-    </div>
+<!-- HERO -->
+<section class="hero">
+<h1>Ankita ❤️</h1>
+<p class="subtitle">I made something special for you...</p>
+
+<div class="scroll-indicator">
+<span>Scroll Down</span>
+<div class="mouse">
+<div class="wheel"></div>
 </div>
-    </section>
+</div>
+</section>
 
-    <section>
-        <h2 class="title">Our Beautiful Memories</h2>
-        <div class="slideshow">
-            <div class="slide active" style="background-image:url('IMG1.jpg')"></div>
-            <div class="slide" style="background-image:url('IMG2.jpg')"></div>
-        </div>
-    </section>
+<!-- SLIDESHOW -->
+<section>
+<h2 style="color:#ff4d6d;">Our Beautiful Memories</h2>
 
-    <section>
-        <h2 class="title">A Letter To My Future Wife</h2>
-        <div class="letter">
-            Ankita,<br><br>
-            You are my happiness, my calm, my forever.
-            Every moment with you feels magical.<br><br>
-            I promise to love you, respect you,
-            and choose you every single day. ❤️
-        </div>
-    </section>
+<div class="slideshow">
+<div class="slide active" style="background-image:url('IMG1.jpg')"></div>
+<div class="slide" style="background-image:url('IMG2.jpg')"></div>
+</div>
+</section>
 
-    <section class="final">
-        <h2 style="font-family:'Playfair Display',serif;color:#d63384">
-            Will You Be My Valentine? ❤️
-        </h2>
+<!-- PROPOSAL -->
+<section class="proposal">
+<h2>Will You Be My Valentine? 💖</h2>
 
-        <div class="game-area">
-            <button id="yesBtn" class="yes-btn">YES ❤️</button>
-            <button id="noBtn" class="no-btn">NO 😢</button>
-        </div>
-    </section>
+<div class="buttons">
+<button class="yes" onclick="sayYes()">Yes ❤️</button>
+<button class="no" id="noBtn">No 😢</button>
+</div>
+</section>
 
-    <script>
-        function toggleMusic() {
-            let music = document.getElementById("bgMusic");
-            music.paused ? music.play() : music.pause();
-        }
+<script>
 
-        /* Slideshow */
-        let slides = document.querySelectorAll(".slide");
-        let current = 0;
-        setInterval(() => {
-            slides[current].classList.remove("active");
-            current = (current + 1) % slides.length;
-            slides[current].classList.add("active");
-        }, 6000);
+/* Enable music after first tap (mobile requirement) */
+document.body.addEventListener("click", function(){
+document.getElementById("music").play();
+}, {once:true});
 
-        /* Game Fix */
-        const noBtn = document.getElementById("noBtn");
-        const yesBtn = document.getElementById("yesBtn");
-        let yesScale = 1;
+/* Slideshow */
+let slides=document.querySelectorAll(".slide");
+let current=0;
 
-        function moveNo() {
-            const area = noBtn.parentElement;
-            const maxX = area.offsetWidth - noBtn.offsetWidth;
-            const maxY = area.offsetHeight - noBtn.offsetHeight;
-            noBtn.style.left = Math.random() * maxX + "px";
-            noBtn.style.top = Math.random() * maxY + "px";
-            yesScale += 0.15;
-            yesBtn.style.transform = "scale(" + yesScale + ")";
-        }
+setInterval(()=>{
+slides[current].classList.remove("active");
+current=(current+1)%slides.length;
+slides[current].classList.add("active");
+},8000);
 
-        noBtn.addEventListener("touchstart", moveNo);
-        noBtn.addEventListener("mouseover", moveNo);
+/* No button runs away */
+const noBtn=document.getElementById("noBtn");
 
-        /* YES Button Working Properly */
-        yesBtn.addEventListener("click", function () {
+noBtn.addEventListener("mouseover",moveButton);
+noBtn.addEventListener("click",moveButton);
 
-            // Clear screen
-            document.body.innerHTML = `
-<div style="
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-background:linear-gradient(to bottom,#fff5f7,#ffe3ec);
-text-align:center;
-font-family:'Playfair Display',serif;
-color:#d63384;
-">
-<h1 style="font-size:2.5rem;">She Said YES ❤️</h1>
-<p style="margin-top:20px;font-size:1.2rem;">
-Forever begins now, Ankita ✨
-</p>
-</div>`;
+function moveButton(){
+let x=Math.random()*200-100;
+let y=Math.random()*100;
+noBtn.style.position="relative";
+noBtn.style.left=x+"px";
+noBtn.style.top=y+"px";
+}
 
-            // Heart rain
-            setInterval(() => {
-                let heart = document.createElement("div");
-                heart.className = "heart";
-                heart.innerHTML = "❤️";
-                heart.style.left = Math.random() * 100 + "vw";
-                document.body.appendChild(heart);
-                setTimeout(() => heart.remove(), 4000);
-            }, 250);
+/* Yes Button */
+function sayYes(){
+alert("Yayyy ❤️ I love you Ankita!");
+createHearts();
+}
 
-        });
-    </script>
+/* Hearts Burst */
+function createHearts(){
+for(let i=0;i<30;i++){
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤️";
+heart.style.left=Math.random()*window.innerWidth+"px";
+heart.style.top=window.innerHeight+"px";
+document.body.appendChild(heart);
+
+setTimeout(()=>heart.remove(),3000);
+}
+}
+
+</script>
 
 </body>
 </html>
