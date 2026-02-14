@@ -323,14 +323,13 @@
     <canvas id="fireworks"></canvas>
 
     <script>
-
         /* MUSIC FADE */
         const music = document.getElementById("music");
         document.body.addEventListener("click", () => {
             music.volume = 0;
             music.play();
             let fade = setInterval(() => {
-                if (music.volume < 0.9) { music.volume += 0.05; }
+                if (music.volume < 0.9) music.volume += 0.05;
                 else clearInterval(fade);
             }, 300);
         }, { once: true });
@@ -380,9 +379,8 @@
             document.getElementById("countdown").innerText = count;
             let interval = setInterval(() => {
                 count--;
-                if (count > 0) {
-                    document.getElementById("countdown").innerText = count;
-                } else {
+                if (count > 0) document.getElementById("countdown").innerText = count;
+                else {
                     clearInterval(interval);
                     document.getElementById("countdown").innerText = "";
                     sayYes();
@@ -392,13 +390,22 @@
 
         /* YES */
         function sayYes() {
-            noBtn.style.display = "none";  // disappears
+            noBtn.style.display = "none";
             document.getElementById("ring").style.display = "block";
 
             setTimeout(() => {
                 document.getElementById("flash").classList.add("active");
                 startFireworks();
                 showMessage();
+
+                // WhatsApp: playful message from her to you
+                const messageFromHer = encodeURIComponent(
+                    `Rahul! 😍💖
+I can’t believe I’m saying this… BUT… YES!! 💃❤️
+I promise to laugh with you, annoy you, and love you forever 😘💞`
+                );
+                const whatsappURL = `https://wa.me/919717046112?text=${messageFromHer}`; // Replace with YOUR number
+                window.open(whatsappURL, "_blank");
             }, 1000);
         }
 
@@ -456,8 +463,6 @@ Rahul ❤️`;
             requestAnimationFrame(animate);
         }
         function startFireworks() { createHeart(); animate(); }
-
     </script>
-
 </body>
 </html>
