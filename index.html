@@ -6,17 +6,22 @@
     <title>For My Love Ankita ❤️</title>
 
     <style>
+        /* Use emoji-supporting fonts */
+        body {
+            font-family: 'Segoe UI', 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
+            background: linear-gradient(180deg,#fff5f7,#ffe3ec);
+            text-align: center;
+            overflow-x: hidden;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Segoe UI',sans-serif;
-            background: linear-gradient(180deg,#fff5f7,#ffe3ec);
-            text-align: center;
-            overflow-x: hidden;
+        html {
+            scroll-behavior: smooth;
         }
 
         /* INTRO */
@@ -69,27 +74,6 @@
             }
         }
 
-        /* Sparkles */
-        .sparkle {
-            position: fixed;
-            width: 3px;
-            height: 3px;
-            background: white;
-            border-radius: 50%;
-            opacity: 0.8;
-            animation: twinkle 2s infinite alternate;
-        }
-
-        @keyframes twinkle {
-            from {
-                opacity: 0.2;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
         /* Scroll Indicator */
         .scroll-indicator {
             position: absolute;
@@ -131,10 +115,28 @@
             }
         }
 
+        /* Scroll-down text */
+        .scroll-text {
+            font-size: 20px;
+            color: #ff1e56;
+            margin-top: 10px;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
         /* SLIDESHOW */
         .slideshow {
             position: relative;
-            height: 70svh;
+            height: 80svh;
             overflow: hidden;
         }
 
@@ -142,7 +144,8 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            background-size: cover;
+            background-size: contain;
+            background-repeat: no-repeat;
             background-position: center;
             opacity: 0;
             transition: opacity 2s;
@@ -190,6 +193,19 @@
         .no {
             background: #ddd;
             position: absolute;
+        }
+
+        /* WhatsApp Reply Button */
+        #whatsappBtn {
+            display: none;
+            padding: 12px 25px;
+            background: #25D366;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
         }
 
         /* RING */
@@ -271,6 +287,27 @@
             }
         }
 
+        /* Sparkles */
+        .sparkle {
+            position: fixed;
+            width: 3px;
+            height: 3px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: twinkle 2s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            from {
+                opacity: 0.2;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
         canvas {
             position: fixed;
             top: 0;
@@ -281,7 +318,7 @@
 </head>
 <body>
 
-    <div class="intro">A Love Story by Rahul ❤️</div>
+    <div class="intro">A Special Gift ❤️</div>
     <div class="flash" id="flash"></div>
     <audio id="music" src="Heeriye.mp3" loop></audio>
 
@@ -289,6 +326,7 @@
         <h1>For My Love Ankita ❤️</h1>
         <div class="scroll-indicator">
             <div class="mouse"><div class="wheel"></div></div>
+            <div class="scroll-text">Scroll down to see our story… 💕</div>
         </div>
     </section>
 
@@ -311,6 +349,7 @@
             <button class="no" id="noBtn">No 😢</button>
         </div>
         <h3 id="countdown"></h3>
+        <button id="whatsappBtn">Send Reply on WhatsApp 📲</button>
     </section>
 
     <div class="ring" id="ring">💍</div>
@@ -323,15 +362,11 @@
     <canvas id="fireworks"></canvas>
 
     <script>
-        /* MUSIC FADE */
         const music = document.getElementById("music");
         document.body.addEventListener("click", () => {
             music.volume = 0;
             music.play();
-            let fade = setInterval(() => {
-                if (music.volume < 0.9) music.volume += 0.05;
-                else clearInterval(fade);
-            }, 300);
+            let fade = setInterval(() => { if (music.volume < 0.9) music.volume += 0.05; else clearInterval(fade); }, 300);
         }, { once: true });
 
         /* SLIDESHOW */
@@ -365,30 +400,22 @@
             setTimeout(() => heart.remove(), 10000);
         }, 800);
 
-        /* Runaway No */
         const noBtn = document.getElementById("noBtn");
-        noBtn.addEventListener("mouseover", moveButton);
-        function moveButton() {
+        noBtn.addEventListener("mouseover", () => {
             noBtn.style.left = (Math.random() * 200 - 100) + "px";
             noBtn.style.top = (Math.random() * 80) + "px";
-        }
+        });
 
-        /* Countdown before proposal */
         function startCountdown() {
             let count = 3;
             document.getElementById("countdown").innerText = count;
             let interval = setInterval(() => {
                 count--;
                 if (count > 0) document.getElementById("countdown").innerText = count;
-                else {
-                    clearInterval(interval);
-                    document.getElementById("countdown").innerText = "";
-                    sayYes();
-                }
+                else { clearInterval(interval); document.getElementById("countdown").innerText = ""; sayYes(); }
             }, 1000);
         }
 
-        /* YES */
         function sayYes() {
             noBtn.style.display = "none";
             document.getElementById("ring").style.display = "block";
@@ -398,23 +425,21 @@
                 startFireworks();
                 showMessage();
 
-                // WhatsApp: playful message from her to you
-                const messageFromHer = encodeURIComponent(
-                    `Rahul! 😍💖
-I can’t believe I’m saying this… BUT… YES!! 💃❤️
-I promise to laugh with you, annoy you, and love you forever 😘💞`
-                );
-                const whatsappURL = `https://wa.me/919717046112?text=${messageFromHer}`; // Replace with YOUR number
-                window.open(whatsappURL, "_blank");
+                // WhatsApp Button with correct emoji encoding
+                const whatsappBtn = document.getElementById("whatsappBtn");
+                whatsappBtn.style.display = "inline-block";
+                whatsappBtn.onclick = () => {
+                    const messageFromHer = `Rahul! 😍💖%0AI can’t believe I’m saying this… BUT… YES!! 💃❤️%0AI promise to laugh with you, annoy you, and love you forever 😘💞`;
+                    const whatsappURL = `https://wa.me/919717046112?text=${messageFromHer}`;
+                    window.open(whatsappURL, "_blank");
+                };
             }, 1000);
         }
 
-        /* TYPEWRITER */
         function showMessage() {
             let message = document.getElementById("loveMessage");
             message.style.display = "block";
             message.scrollIntoView({ behavior: "smooth" });
-
             let text = `Ankita,
 
 You are my once in a lifetime love.
@@ -424,7 +449,6 @@ I promise to choose you every single day.
 
 Forever yours,
 Rahul ❤️`;
-
             let i = 0;
             function type() {
                 if (i < text.length) {
@@ -436,12 +460,11 @@ Rahul ❤️`;
             type();
         }
 
-        /* HEART FIREWORKS */
+        /* Heart Fireworks */
         const canvas = document.getElementById("fireworks");
         const ctx = canvas.getContext("2d");
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-
         let particles = [];
         function createHeart() {
             for (let t = 0; t < Math.PI * 2; t += 0.1) {
@@ -453,9 +476,7 @@ Rahul ❤️`;
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             particles.forEach((p, i) => {
-                p.x += p.dx * 0.5;
-                p.y += p.dy * 0.5;
-                p.life--;
+                p.x += p.dx * 0.5; p.y += p.dy * 0.5; p.life--;
                 ctx.fillStyle = "#ff1e56";
                 ctx.fillRect(p.x, p.y, 2, 2);
                 if (p.life <= 0) particles.splice(i, 1);
@@ -463,6 +484,7 @@ Rahul ❤️`;
             requestAnimationFrame(animate);
         }
         function startFireworks() { createHeart(); animate(); }
+
     </script>
 </body>
 </html>
